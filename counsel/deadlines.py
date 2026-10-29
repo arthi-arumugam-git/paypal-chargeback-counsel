@@ -9,7 +9,7 @@ from dataclasses import dataclass
 from datetime import date
 from .queue import build_queue, DEFAULT_FEE
 from .models import Dispute
-from .seed import SEED
+from .seed import current
 
 
 @dataclass
@@ -57,7 +57,7 @@ def main(argv=None) -> None:
     ap.add_argument("--today", default=date.today().isoformat())
     ap.add_argument("--warn-days", type=int, default=3)
     a = ap.parse_args(argv)
-    print(render(alerts(SEED, date.fromisoformat(a.today), a.warn_days)))
+    print(render(alerts(current(), date.fromisoformat(a.today), a.warn_days)))
 
 
 if __name__ == "__main__":

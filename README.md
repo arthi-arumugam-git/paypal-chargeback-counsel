@@ -44,4 +44,4 @@ Python, PayPal REST APIs (OAuth2, Disputes, Orders), an LLM for drafting, static
 ## License
 MIT (see LICENSE).
 
-> Status Oct 28 2026: this README is the target spec. Code lives in the Airwallex prototype (`counsel/` package) and is being ported; PayPal sandbox calls are blocked until sandbox credentials exist (see SANDBOX_SETUP.md). Commands above that mention `--source paypal` do not work yet.
+> Status Oct 30 2026: the core (playbooks, triage queue, deadlines, packets, approval gate), the PayPal Disputes client and the reason mapping are in `counsel/`. `--source mock` works offline. `--source paypal` is implemented but has not been run against the sandbox yet (no credentials; see SANDBOX_SETUP.md). The webhook, LLM drafting and `counsel.dashboard` are not ported yet.

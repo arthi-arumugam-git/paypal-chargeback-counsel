@@ -1,7 +1,17 @@
-"""Ten synthetic disputes across reason codes for offline development and evals."""
+"""Dispute sources: built-in synthetic SEED, offline PayPal-shaped fixtures, or the PayPal sandbox.
+
+Run: python3 -m counsel.seed --source mock|paypal [--out data/disputes.json]
+Writes the mapped disputes to --out; queue/deadlines/packet/gaps read that file.
+"""
+from __future__ import annotations
+import argparse
 import json
+import sys
 from pathlib import Path
 from .models import Dispute, Evidence, Reason
+
+MOCK_PATH = Path(__file__).resolve().parent.parent / "data" / "mock_paypal_disputes.json"
+DEFAULT_OUT = "data/disputes.json"
 
 E = Evidence
 SEED = [
@@ -18,11 +28,57 @@ SEED = [
 ]
 
 
-def dump(path: str = "data/disputes.json") -> None:
+def dump(disputes: list[Dispute] = SEED, path: str = DEFAULT_OUT) -> None:
     def enc(d):
         x = d.__dict__.copy(); x["reason"] = d.reason.value; x["evidence"] = d.evidence.__dict__; return x
-    Path(path).write_text(json.dumps([enc(d) for d in SEED], indent=2))
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+    Path(path).write_text(json.dumps([enc(d) for d in disputes], indent=2) + "\n")
+
+
+def load(path: str = DEFAULT_OUT) -> list[Dispute]:
+    rows = json.loads(Path(path).read_text())
+    return [Dispute(**{**r, "reason": Reason(r["reason"]), "evidence": Evidence(**r["evidence"])}) for r in rows]
+
+
+def current(path: str = DEFAULT_OUT) -> list[Dispute]:
+    """Disputes written by the last `counsel.seed` run, or the built-in SEED if none."""
+    return load(path) if Path(path).exists() else SEED
+
+
+def from_mock(path: Path = MOCK_PATH) -> list[Dispute]:
+    from .paypal import from_paypal
+    doc = json.loads(Path(path).read_text())
+    records = doc.get("merchant_records", {})
+    return [from_paypal(item, Evidence(**records.get(item["dispute_id"], {}))) for item in doc["items"]]
+
+
+def from_paypal_api(client=None, dispute_state: str | None = "REQUIRED_ACTION") -> list[Dispute]:
+    from .paypal import PayPalClient, UnsupportedReason, from_paypal
+    client = client or PayPalClient.from_env()
+    out = []
+    # TODO: follow links/next_page_token; one page is enough for the sandbox demo.
+    for summary in client.list_disputes(dispute_state=dispute_state, page_size=50).get("items", []):
+        detail = client.get_dispute(summary["dispute_id"])  # list items lack disputed_transactions
+        try:
+            # TODO: merchant-side evidence (tracking, order records) is not wired yet; starts empty.
+            out.append(from_paypal(detail))
+        except UnsupportedReason as e:
+            print(f"skip: {e}", file=sys.stderr)
+    return out
+
+
+def main(argv=None) -> None:
+    ap = argparse.ArgumentParser(description="Load disputes and write them for the queue.")
+    ap.add_argument("--source", choices=["mock", "paypal", "seed"], default="mock")
+    ap.add_argument("--out", default=DEFAULT_OUT)
+    a = ap.parse_args(argv)
+    try:
+        disputes = {"mock": from_mock, "paypal": from_paypal_api, "seed": lambda: SEED}[a.source]()
+    except RuntimeError as e:
+        sys.exit(f"error: {e}")
+    dump(disputes, a.out)
+    print(f"{len(disputes)} disputes from {a.source} -> {a.out}")
 
 
 if __name__ == "__main__":
-    dump()
+    main()

@@ -8,7 +8,7 @@ import json
 from dataclasses import dataclass
 from .models import Dispute
 from .playbooks import win_likelihood, recommend
-from .seed import SEED
+from .seed import current
 
 DEFAULT_FEE = 15.0  # assumed per-dispute handling cost in the dispute currency
 
@@ -56,7 +56,7 @@ def main(argv=None) -> None:
     ap.add_argument("--fee", type=float, default=DEFAULT_FEE)
     ap.add_argument("--json", action="store_true")
     a = ap.parse_args(argv)
-    items = build_queue(SEED, a.fee)
+    items = build_queue(current(), a.fee)
     if a.json:
         print(json.dumps([{"id": i.dispute.id, "p_win": i.p_win, "ev": i.expected_value,
                            "action": i.action} for i in items], indent=2))

@@ -72,8 +72,8 @@ def main(argv=None) -> None:
     ap.add_argument("--out", default="data/packets")
     ap.add_argument("--json", action="store_true")
     a = ap.parse_args(argv)
-    from .seed import SEED
-    for p in write_packets(SEED, a.out, a.fee, a.json):
+    from .seed import current
+    for p in write_packets(current(), a.out, a.fee, a.json):
         print(p)
 
 

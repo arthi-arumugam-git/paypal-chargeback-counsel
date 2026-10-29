@@ -49,5 +49,5 @@ def report(disputes: list[Dispute]) -> str:
 
 
 if __name__ == "__main__":
-    from .seed import SEED
-    print(report(SEED))
+    from .seed import current
+    print(report(current()))

@@ -1,0 +1,192 @@
+{
+  "_note": "SYNTHETIC test data shaped like GET /v1/customer/disputes/{id} responses. Not real PayPal disputes, buyers or merchants.",
+  "items": [
+    {
+      "dispute_id": "PP-D-SYNTH-0001",
+      "create_time": "2026-10-21T09:12:00.000Z",
+      "update_time": "2026-10-21T09:12:00.000Z",
+      "disputed_transactions": [
+        {
+          "seller_transaction_id": "SYNTH0000000000001",
+          "buyer_transaction_id": "SYNTHBUYER0001",
+          "transaction_status": "COMPLETED",
+          "gross_amount": {
+            "currency_code": "USD",
+            "value": "184.00"
+          },
+          "invoice_number": "SYNTH-INV-0001",
+          "buyer": {
+            "name": "Synthetic Buyer"
+          },
+          "seller": {
+            "name": "Synthetic Merchant"
+          }
+        }
+      ],
+      "reason": "MERCHANDISE_OR_SERVICE_NOT_RECEIVED",
+      "status": "WAITING_FOR_SELLER_RESPONSE",
+      "dispute_amount": {
+        "currency_code": "USD",
+        "value": "184.00"
+      },
+      "dispute_life_cycle_stage": "INQUIRY",
+      "dispute_channel": "INTERNAL",
+      "seller_response_due_date": "2026-11-04T23:59:59.000Z",
+      "links": []
+    },
+    {
+      "dispute_id": "PP-D-SYNTH-0002",
+      "create_time": "2026-10-23T14:40:00.000Z",
+      "update_time": "2026-10-23T14:40:00.000Z",
+      "disputed_transactions": [
+        {
+          "seller_transaction_id": "SYNTH0000000000002",
+          "buyer_transaction_id": "SYNTHBUYER0002",
+          "transaction_status": "COMPLETED",
+          "gross_amount": {
+            "currency_code": "USD",
+            "value": "92.50"
+          },
+          "invoice_number": "SYNTH-INV-0002",
+          "buyer": {
+            "name": "Synthetic Buyer"
+          },
+          "seller": {
+            "name": "Synthetic Merchant"
+          }
+        }
+      ],
+      "reason": "MERCHANDISE_OR_SERVICE_NOT_AS_DESCRIBED",
+      "status": "WAITING_FOR_SELLER_RESPONSE",
+      "dispute_amount": {
+        "currency_code": "USD",
+        "value": "92.50"
+      },
+      "dispute_life_cycle_stage": "INQUIRY",
+      "dispute_channel": "INTERNAL",
+      "seller_response_due_date": "2026-11-06T23:59:59.000Z",
+      "links": []
+    },
+    {
+      "dispute_id": "PP-D-SYNTH-0003",
+      "create_time": "2026-10-20T18:05:00.000Z",
+      "update_time": "2026-10-20T18:05:00.000Z",
+      "disputed_transactions": [
+        {
+          "seller_transaction_id": "SYNTH0000000000003",
+          "buyer_transaction_id": "SYNTHBUYER0003",
+          "transaction_status": "COMPLETED",
+          "gross_amount": {
+            "currency_code": "USD",
+            "value": "310.00"
+          },
+          "invoice_number": "SYNTH-INV-0003",
+          "buyer": {
+            "name": "Synthetic Buyer"
+          },
+          "seller": {
+            "name": "Synthetic Merchant"
+          }
+        }
+      ],
+      "reason": "UNAUTHORISED",
+      "status": "WAITING_FOR_SELLER_RESPONSE",
+      "dispute_amount": {
+        "currency_code": "USD",
+        "value": "310.00"
+      },
+      "dispute_life_cycle_stage": "INQUIRY",
+      "dispute_channel": "INTERNAL",
+      "seller_response_due_date": "2026-11-03T23:59:59.000Z",
+      "links": []
+    },
+    {
+      "dispute_id": "PP-D-SYNTH-0004",
+      "create_time": "2026-10-26T11:30:00.000Z",
+      "update_time": "2026-10-26T11:30:00.000Z",
+      "disputed_transactions": [
+        {
+          "seller_transaction_id": "SYNTH0000000000004",
+          "buyer_transaction_id": "SYNTHBUYER0004",
+          "transaction_status": "COMPLETED",
+          "gross_amount": {
+            "currency_code": "USD",
+            "value": "45.00"
+          },
+          "invoice_number": "SYNTH-INV-0004",
+          "buyer": {
+            "name": "Synthetic Buyer"
+          },
+          "seller": {
+            "name": "Synthetic Merchant"
+          }
+        }
+      ],
+      "reason": "DUPLICATE_TRANSACTION",
+      "status": "OPEN",
+      "dispute_amount": {
+        "currency_code": "USD",
+        "value": "45.00"
+      },
+      "dispute_life_cycle_stage": "INQUIRY",
+      "dispute_channel": "INTERNAL",
+      "seller_response_due_date": "2026-11-09T23:59:59.000Z",
+      "links": []
+    },
+    {
+      "dispute_id": "PP-D-SYNTH-0005",
+      "create_time": "2026-10-25T08:00:00.000Z",
+      "update_time": "2026-10-25T08:00:00.000Z",
+      "disputed_transactions": [
+        {
+          "seller_transaction_id": "SYNTH0000000000005",
+          "buyer_transaction_id": "SYNTHBUYER0005",
+          "transaction_status": "COMPLETED",
+          "gross_amount": {
+            "currency_code": "USD",
+            "value": "27.99"
+          },
+          "invoice_number": "SYNTH-INV-0005",
+          "buyer": {
+            "name": "Synthetic Buyer"
+          },
+          "seller": {
+            "name": "Synthetic Merchant"
+          }
+        }
+      ],
+      "reason": "CREDIT_NOT_PROCESSED",
+      "status": "WAITING_FOR_SELLER_RESPONSE",
+      "dispute_amount": {
+        "currency_code": "USD",
+        "value": "27.99"
+      },
+      "dispute_life_cycle_stage": "INQUIRY",
+      "dispute_channel": "INTERNAL",
+      "seller_response_due_date": "2026-11-08T23:59:59.000Z",
+      "links": []
+    }
+  ],
+  "merchant_records": {
+    "_note": "Merchant-side evidence flags (from the merchant's own order/shipping systems, not from PayPal), keyed by dispute_id.",
+    "PP-D-SYNTH-0001": {
+      "tracking_delivered": true,
+      "signature": true
+    },
+    "PP-D-SYNTH-0002": {
+      "product_matches_listing": true,
+      "customer_comms": [
+        "Offered a free return on 2026-10-24"
+      ]
+    },
+    "PP-D-SYNTH-0003": {
+      "avs_match": true,
+      "tracking_delivered": true,
+      "cvv_match": true
+    },
+    "PP-D-SYNTH-0004": {
+      "second_charge_distinct": true
+    },
+    "PP-D-SYNTH-0005": {}
+  }
+}
