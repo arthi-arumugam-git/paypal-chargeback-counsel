@@ -29,6 +29,7 @@ cp .env.example .env            # PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PAYPAL
 python3 -m counsel.seed --source paypal   # pull sandbox disputes (or --source mock for offline)
 python3 -m counsel.queue                  # ranked triage queue
 python3 -m counsel.dashboard              # approval dashboard -> data/dashboard.html
+python3 -m counsel.dashboard --approve PP-D-SYNTH-0001 --approver "Your name"  # record an approval
 python3 -m pytest -q
 ```
 Offline mode (`--source mock`) runs with no keys, so judges can try it without a PayPal account.
@@ -44,4 +45,4 @@ Python, PayPal REST APIs (OAuth2, Disputes, Orders), an LLM for drafting, static
 ## License
 MIT (see LICENSE).
 
-> Status Oct 30 2026: the core (playbooks, triage queue, deadlines, packets, approval gate), the PayPal Disputes client and the reason mapping are in `counsel/`. `--source mock` works offline. `--source paypal` is implemented but has not been run against the sandbox yet (no credentials; see SANDBOX_SETUP.md). The webhook, LLM drafting and `counsel.dashboard` are not ported yet.
+> Status Oct 30 2026: the core (playbooks, triage queue, deadlines, packets, approval gate), the PayPal Disputes client and the reason mapping are in `counsel/`. `--source mock` works offline. `--source paypal` is implemented but has not been run against the sandbox yet (no credentials; see SANDBOX_SETUP.md). `counsel.dashboard` is ported: it writes a static `data/dashboard.html` (ranked queue, deadlines, EV, contest/accept, evidence gaps, approval status per dispute). The page itself submits nothing; `--approve` records an approval in `data/approvals.json`, and the dashboard does not call PayPal. The webhook and LLM drafting are not ported yet.

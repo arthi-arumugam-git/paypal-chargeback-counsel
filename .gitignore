@@ -9,3 +9,4 @@ __pycache__/
 data/*.html
 data/disputes.json
 data/packets/
+data/approvals.json
