@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chargeback-counsel"
+version = "0.1.0"
+description = "Approval-gated dispute agent for PayPal merchants"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "Arthi Arumugam"}]
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[tool.setuptools]
+packages = ["counsel"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
