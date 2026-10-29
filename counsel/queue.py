@@ -35,7 +35,7 @@ def build_queue(disputes: list[Dispute], fee: float = DEFAULT_FEE) -> list[Queue
             action = "accept"  # winnable but not worth the cost
         items.append(QueueItem(d, win_likelihood(d), action, ev))
     # contest items first, earliest due date, then highest expected value
-    items.sort(key=lambda i: (i.action != "contest", i.dispute.due_date, -i.expected_value))
+    items.sort(key=lambda i: (i.action != "contest", i.dispute.due_date or "9999-12-31", -i.expected_value))
     return items
 
 

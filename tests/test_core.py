@@ -20,13 +20,14 @@ def test_rebuttal_is_draft_and_cites_evidence():
 
 class FakeClient:
     def __init__(self): self.calls = []
-    def submit_evidence(self, did, text): self.calls.append(did); return {"ok": True}
+    def provide_evidence(self, did, approval, notes=""): self.calls.append((did, approval.approver)); return {"ok": True}
 
 def test_no_submit_without_approval():
     c = FakeClient(); s = Submission("dsp_001", "x")
     with pytest.raises(NotApproved): s.submit(c)
     assert c.calls == []
     s.approve("merchant@example.com"); assert s.submit(c) == {"ok": True}
+    assert c.calls == [("dsp_001", "merchant@example.com")] and s.submitted
 
 def test_all_seeds_scored_in_range():
     assert all(0.0 <= win_likelihood(d) <= 1.0 for d in SEED) and len(SEED) == 10

@@ -32,7 +32,7 @@ def classify(days_left: int, warn_days: int) -> str:
 def alerts(disputes: list[Dispute], today: date, warn_days: int = 3, fee: float = DEFAULT_FEE) -> list[Alert]:
     out = []
     for item in build_queue(disputes, fee):
-        if item.action != "contest":
+        if item.action != "contest" or not item.dispute.due_date:
             continue
         d = item.dispute
         left = (date.fromisoformat(d.due_date) - today).days

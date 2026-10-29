@@ -27,6 +27,15 @@ PLAYBOOKS: dict[Reason, list[tuple[str, float, str]]] = {
         ("terms_accepted", 0.5, "The customer accepted recurring-billing terms."),
         ("customer_comms", 0.5, "No cancellation request was received before the charge."),
     ],
+    Reason.INCORRECT_AMOUNT: [
+        ("amount_matches_order", 0.7, "The amount charged matches the order total the buyer approved."),
+        ("customer_comms", 0.3, "The buyer was told the final amount in writing before the charge."),
+    ],
+    Reason.CREDIT_NOT_PROCESSED: [
+        ("refund_issued", 0.6, "The refund was already issued for this transaction."),
+        ("terms_accepted", 0.25, "The buyer accepted a return policy under which no refund is due."),
+        ("customer_comms", 0.15, "Correspondence shows the buyer did not return the item as the policy requires."),
+    ],
 }
 
 

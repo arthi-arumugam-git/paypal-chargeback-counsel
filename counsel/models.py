@@ -9,6 +9,8 @@ class Reason(str, Enum):
     NOT_AS_DESCRIBED = "not_as_described"
     DUPLICATE = "duplicate"
     SUBSCRIPTION_CANCELLED = "subscription_cancelled"
+    INCORRECT_AMOUNT = "incorrect_amount"
+    CREDIT_NOT_PROCESSED = "credit_not_processed"
 
 
 @dataclass
@@ -24,6 +26,7 @@ class Evidence:
     cancel_before_charge: bool = False
     terms_accepted: bool = False
     product_matches_listing: bool = False
+    amount_matches_order: bool = False
 
 
 @dataclass
@@ -34,4 +37,5 @@ class Dispute:
     currency: str
     reason: Reason
     evidence: Evidence
-    due_date: str
+    due_date: str  # ISO date; "" when the processor gives no response deadline
+    status: str = ""
