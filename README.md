@@ -32,6 +32,7 @@ python3 -m counsel.dashboard              # approval dashboard -> data/dashboard
 python3 -m counsel.dashboard --approve PP-D-SYNTH-0001 --approver "Your name"  # record an approval
 python3 -m pytest -q
 ```
+Offline demo video (synthetic fixtures, real CLI output): `python3 scripts/make_demo_video.py` -> `data/demo/paypal_counsel_demo.mp4` (needs ffmpeg, and edge-tts or espeak-ng; Chrome for the dashboard shot).
 Offline mode (`--source mock`) runs with no keys, so judges can try it without a PayPal account.
 
 ## Safety

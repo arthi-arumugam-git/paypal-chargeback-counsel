@@ -12,3 +12,5 @@ Storyboard source: the existing offline demo https://youtu.be/ULEQ5x7_Qxk (Airwa
 | 2:35–2:50 | Recovery total + repo URL + MIT | "Expected recovery on this queue: $X. Code is open source." | New |
 
 Recording notes: 1080p, no music (or a licensed track), captions on. Upload as **Public**. Put the link in Devpost and the README.
+
+Offline cut (available now): `scripts/make_demo_video.py` renders `data/demo/paypal_counsel_demo.mp4` from the mock fixtures. It shows seed, queue, deadlines, packet, approval and dashboard with real CLI output, and says plainly that sandbox runs, submit, webhooks and LLM drafting are not done yet. Replace it with the sandbox footage above once credentials are available.
