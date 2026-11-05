@@ -31,7 +31,7 @@ Run against sandbox disputes, port the webhook (`CUSTOMER.DISPUTE.CREATED`, sign
 python, paypal-rest-api, paypal-disputes-api, oauth2, html, ffmpeg
 
 ## Links (fill before submit)
-- Repo (public, MIT LICENSE visible): NOT YET PUBLISHED. Repo is local only, no git remote.
+- Repo (public, MIT LICENSE visible): https://github.com/arthi-arumugam-git/paypal-chargeback-counsel
 - Video (YouTube, Public, under 3:00): data/demo/paypal_counsel_demo.mp4 (2:31, synthetic fixtures labeled) NOT YET UPLOADED.
 - Try it: `pip install -e . && python3 -m counsel.seed --source mock && python3 -m counsel.queue`
 
