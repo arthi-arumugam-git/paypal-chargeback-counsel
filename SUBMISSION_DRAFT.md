@@ -32,11 +32,11 @@ python, paypal-rest-api, paypal-disputes-api, oauth2, html, ffmpeg
 
 ## Links (fill before submit)
 - Repo (public, MIT LICENSE visible): https://github.com/arthi-arumugam-git/paypal-chargeback-counsel
-- Video (YouTube, Public, under 3:00): data/demo/paypal_counsel_demo.mp4 (2:31, synthetic fixtures labeled) NOT YET UPLOADED.
+- Video (YouTube, Public, under 3:00): https://youtu.be/7OIXezJqkSs (uploaded Nov 6 2026 ~5:04 AM IST from data/demo/paypal_counsel_demo.mp4, 2:31, synthetic fixtures labeled).
 - Try it: `pip install -e . && python3 -m counsel.seed --source mock && python3 -m counsel.queue`
 
 ## Open blockers
 1. PayPal sandbox client ID/secret (Arthi) for real sandbox dispute IDs on screen (Best Use of PayPal + AI).
 2. Publish repo to GitHub as public.
-3. Upload demo to YouTube as Public.
+3. Upload demo to YouTube as Public. DONE — https://youtu.be/7OIXezJqkSs
 4. Confirm Devpost registration for the PayPal AI Hackathon.
