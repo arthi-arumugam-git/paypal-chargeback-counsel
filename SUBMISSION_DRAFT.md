@@ -37,6 +37,8 @@ python, paypal-rest-api, paypal-disputes-api, oauth2, html, ffmpeg
 
 ## Open blockers
 1. PayPal sandbox client ID/secret (Arthi) for real sandbox dispute IDs on screen (Best Use of PayPal + AI).
-2. Publish repo to GitHub as public.
-3. Upload demo to YouTube as Public. DONE — https://youtu.be/7OIXezJqkSs
-4. Confirm Devpost registration for the PayPal AI Hackathon.
+2. Confirm Devpost registration for the PayPal AI Hackathon (deadline Nov 13 1:30 AM IST).
+
+## Done (do not re-do)
+- Public repo: https://github.com/arthi-arumugam-git/paypal-chargeback-counsel
+- YouTube Public demo (2:31): https://youtu.be/7OIXezJqkSs (Nov 6 ~5:04 AM IST)
